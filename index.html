@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1" name="viewport">
+		<meta content="IE=edge" http-equiv="X-UA-Compatible">
+		<title>slider</title>
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<script src="js/jquery.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<style type="text/css">
+		.navbar-button{
+			display: block;
+		}
+		.navbar-nav{
+			width: 0px;
+		}
+		ul.nav.navbar-nav {
+			transition: width 1s;
+			-webkit-transition: width 1s;
+			width: 0px;
+		}
+		.navbar-nav {
+			height: 45px;
+			float: right;
+			overflow: hidden;
+		}
+		@media only screen and (max-width: 768px) {
+			.navbar-button{
+				display: none;
+			}
+			ul.nav.navbar-nav {
+				width: auto;
+			}
+			.navbar-nav {
+				height: auto;
+				float: left;
+				overflow: inherit;
+			}
+		}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button class="navbar-toggle" data-target="#myNavbar" data-toggle="collapse" type="button"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button> <a class="navbar-brand" href="#">WebSiteName</a>
+					</div><button class="navbar-toggle navbar-button" id="nav-trigger" type="button"><span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+					<div class="collapse navbar-collapse" id="myNavbar">
+						<ul class="nav navbar-nav" id="navbar">
+							<li class=""><a href="#">Home</a></li>
+							<li><a href="#">Page 1</a></li>
+							<li><a href="#">Page 2</a></li>
+							<li><a href="#">Page 3</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<script type="text/javascript">
+			$('#nav-trigger').click(function(){
+				items = parseInt($('#navbar').children('li').length)*80;
+				if($('#navbar').hasClass('is-active') == false){
+					var navwidth = function(){
+						$('#navbar').css('width', 'auto').css('width', '+=1px');
+					};
+					$("#navbar").css('width', items+'px');
+					setTimeout(navwidth, 700);
+					$('#navbar').addClass('is-active');
+				}
+				else{
+					$('#navbar').removeClass('is-active');
+					$("#navbar").css('width', '0px');
+				}
+			});
+			</script>
+		</body>
+	</html>
